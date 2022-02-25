@@ -70,6 +70,19 @@
                 }
             </ext:document>
         </ext:insertOne>
+      <rollback>
+         <ext:runCommand>
+            <ext:command>
+               {
+                  delete: "students",
+                  deletes: [ 
+                     { q: { name: "Alice" }, limit: 0}
+                  ],
+                  comment: "rolling back data from students"
+               }
+            </ext:command>
+         </ext:runCommand>
+      </rollback>
     </changeSet>
     <changeSet id="create_inventory" author="AdeelM" labels="version1">
       <ext:insertMany collectionName="inventory">
@@ -85,6 +98,25 @@
             ]
           </ext:documents>
       </ext:insertMany>
+      <rollback>
+         <ext:runCommand>
+            <ext:command>
+               {
+                  delete: "car",
+                  deletes: [ 
+                     { q: { item: "journal" }, limit: 0},
+                     { q: { item: "notebook" }, limit: 0},
+                     { q: { item: "paper" }, limit: 0},
+                     { q: { item: "planner" }, limit: 0},
+                     { q: { item: "postcard" }, limit: 0},
+                     { q: { item: "apple" }, limit: 0},
+                     { q: { item: "pears" }, limit: 0}
+                  ],
+                  comment: "rolling back data from inventory"
+               }
+            </ext:command>
+         </ext:runCommand>
+      </rollback>
     </changeSet>
     <!-- https://docs.mongodb.com/manual/core/capped-collections/ -->
     <changeSet id="capped_inventory" author="RobertR" labels="version1">
@@ -98,6 +130,13 @@
              }
           </ext:command>
       </ext:runCommand>
+      <rollback>
+         <ext:runCommand>
+            <ext:command>
+               { drop: "capped_inventory" }
+            </ext:command>
+         </ext:runCommand>
+      </rollback>
   </changeSet>
   <changeSet id="create_car" author="AdeelM" labels="version1">
    <ext:insertMany collectionName="car">
@@ -109,6 +148,13 @@
          ]
        </ext:documents>
    </ext:insertMany>
+         <rollback>
+         <ext:runCommand>
+            <ext:command>
+               { drop: "car" }
+            </ext:command>
+         </ext:runCommand>
+      </rollback>
  </changeSet>
   <changeSet id="findAndModify_car" author="ChristineM" labels="version1">
    <ext:runCommand>
