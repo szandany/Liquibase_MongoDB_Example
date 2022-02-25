@@ -55,7 +55,7 @@
           </ext:options>
       </ext:createCollection>
     </changeSet>
-    <changeSet id="insertOne_tudents" author="AmyS" labels="version1">
+    <changeSet id="insertOne_Students" author="AmyS" labels="version1">
         <ext:insertOne collectionName="students">
             <ext:document>
                 {

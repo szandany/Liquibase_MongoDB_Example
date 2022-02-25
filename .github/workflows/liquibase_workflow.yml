@@ -59,7 +59,7 @@ jobs:
       with:
         args: update
           
-    - name: Runnig the History command 
+    - name: Running the History command 
       uses: docker://liquibase/liquibase:4.8
       with:
         args: liquibase history
