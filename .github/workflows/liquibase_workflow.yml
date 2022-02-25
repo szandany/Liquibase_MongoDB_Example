@@ -39,27 +39,27 @@ jobs:
       with:
         args: status --verbose
     
-    - name: Tagging the database for future rollbacks
-      uses: docker://liquibase/liquibase:4.8
-      with:
-        args: tag ${{ github.event.inputs.tag }}
+#     - name: Tagging the database for future rollbacks
+#       uses: docker://liquibase/liquibase:4.8
+#       with:
+#         args: tag ${{ github.event.inputs.tag }}
     
-    - name: Validating Database Changes
-      uses: docker://liquibase/liquibase:4.8
-      with:
-        args: update
+#     - name: Validating Database Changes
+#       uses: docker://liquibase/liquibase:4.8
+#       with:
+#         args: update
       
-    - name: Validating rollbacks
-      uses: docker://liquibase/liquibase:4.8
-      with:
-        args: rollback ${{ github.event.inputs.tag }}
+#     - name: Validating rollbacks
+#       uses: docker://liquibase/liquibase:4.8
+#       with:
+#         args: rollback ${{ github.event.inputs.tag }}
         
-    - name: Deploying Database Changes
-      uses: docker://liquibase/liquibase:4.8
-      with:
-        args: update
+#     - name: Deploying Database Changes
+#       uses: docker://liquibase/liquibase:4.8
+#       with:
+#         args: update
           
-    - name: Runnig the History command 
-      uses: docker://liquibase/liquibase:4.8
-      with:
-        args: liquibase history
+#     - name: Runnig the History command 
+#       uses: docker://liquibase/liquibase:4.8
+#       with:
+#         args: liquibase history
