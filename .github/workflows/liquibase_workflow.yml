@@ -59,4 +59,7 @@ jobs:
       with:
         args: update
           
-    
+    - name: Runnig the History command 
+      uses: docker://liquibase/liquibase:snowflake
+      with:
+        args: liquibase history
