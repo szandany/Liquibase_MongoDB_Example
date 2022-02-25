@@ -102,7 +102,7 @@
          <ext:runCommand>
             <ext:command>
                {
-                  delete: "car",
+                  delete: "inventory",
                   deletes: [ 
                      { q: { item: "journal" }, limit: 0},
                      { q: { item: "notebook" }, limit: 0},
